@@ -1,204 +1,202 @@
-Please see the LICENSE file for details on copying and usage.
-Please refer to the INSTALL file for instructions on how to build.
+Por favor, veja o arquivo LICENSE para detalhes sobre cópia e uso.
+Consulte o arquivo INSTALL para instruções sobre como compilar.
 
-What is busybox:
+O que é o BusyBox:
 
-  BusyBox combines tiny versions of many common UNIX utilities into a single
-  small executable.  It provides minimalist replacements for most of the
-  utilities you usually find in bzip2, coreutils, dhcp, diffutils, e2fsprogs,
+  O BusyBox combina versões reduzidas de muitos utilitários comuns do UNIX em um único
+  executável pequeno. Ele fornece substituições minimalistas para a maioria dos
+  utilitários que você geralmente encontra em bzip2, coreutils, dhcp, diffutils, e2fsprogs,
   file, findutils, gawk, grep, inetutils, less, modutils, net-tools, procps,
-  sed, shadow, sysklogd, sysvinit, tar, util-linux, and vim.  The utilities
-  in BusyBox often have fewer options than their full-featured cousins;
-  however, the options that are included provide the expected functionality
-  and behave very much like their larger counterparts.
+  sed, shadow, sysklogd, sysvinit, tar, util-linux e vim. Os utilitários
+  no BusyBox geralmente têm menos opções do que suas contrapartes completas;
+  no entanto, as opções incluídas fornecem a funcionalidade esperada
+  e se comportam de maneira muito semelhante às suas contrapartes maiores.
 
-  BusyBox has been written with size-optimization and limited resources in
-  mind, both to produce small binaries and to reduce run-time memory usage.
-  Busybox is also extremely modular so you can easily include or exclude
-  commands (or features) at compile time.  This makes it easy to customize
-  embedded systems; to create a working system, just add /dev, /etc, and a
-  Linux kernel.  Busybox (usually together with uClibc) has also been used as
-  a component of "thin client" desktop systems, live-CD distributions, rescue
-  disks, installers, and so on.
+  O BusyBox foi escrito com otimização de tamanho e recursos limitados
+  em mente, tanto para produzir binários pequenos quanto para reduzir o uso de memória em tempo de execução.
+  O BusyBox também é extremamente modular, permitindo que você inclua ou exclua
+  comandos (ou recursos) facilmente no momento da compilação. Isso facilita a personalização
+  de sistemas embarcados; para criar um sistema funcional, basta adicionar /dev, /etc, e um
+  kernel Linux. O BusyBox (geralmente junto com uClibc) também tem sido usado como
+  um componente de sistemas de "thin client", distribuições live-CD, discos de resgate,
+  instaladores, e assim por diante.
 
-  BusyBox provides a fairly complete POSIX environment for any small system,
-  both embedded environments and more full featured systems concerned about
-  space.  Busybox is slowly working towards implementing the full Single Unix
-  Specification V3 (http://www.opengroup.org/onlinepubs/009695399/), but isn't
-  there yet (and for size reasons will probably support at most UTF-8 for
-  internationalization).  We are also interested in passing the Linux Test
+  O BusyBox fornece um ambiente POSIX bastante completo para qualquer sistema pequeno,
+  tanto em ambientes embarcados quanto em sistemas mais completos preocupados com
+  espaço. O BusyBox está lentamente trabalhando para implementar a especificação completa do Single Unix
+  Specification V3 (http://www.opengroup.org/onlinepubs/009695399/), mas ainda não
+  chegou lá (e por motivos de tamanho, provavelmente suportará no máximo UTF-8 para
+  internacionalização). Também estamos interessados em passar no Linux Test
   Project (http://ltp.sourceforge.net).
 
 ----------------
 
-Using busybox:
+Usando o BusyBox:
 
-  BusyBox is extremely configurable.  This allows you to include only the
-  components and options you need, thereby reducing binary size.  Run 'make
-  config' or 'make menuconfig' to select the functionality that you wish to
-  enable.  (See 'make help' for more commands.)
+  O BusyBox é extremamente configurável. Isso permite incluir apenas os
+  componentes e opções que você precisa, reduzindo assim o tamanho do binário. Execute 'make
+  config' ou 'make menuconfig' para selecionar a funcionalidade que você deseja
+  habilitar. (Veja 'make help' para mais comandos.)
 
-  The behavior of busybox is determined by the name it's called under: as
-  "cp" it behaves like cp, as "sed" it behaves like sed, and so on.  Called
-  as "busybox" it takes the second argument as the name of the applet to
-  run (I.E. "./busybox ls -l /proc").
+  O comportamento do BusyBox é determinado pelo nome pelo qual é chamado: como
+  "cp", ele se comporta como cp, como "sed", ele se comporta como sed, e assim por diante. Chamado
+  como "busybox", ele toma o segundo argumento como o nome do applet a
+  executar (exemplo: "./busybox ls -l /proc").
 
-  The "standalone shell" mode is an easy way to try out busybox; this is a
-  command shell that calls the built-in applets without needing them to be
-  installed in the path.  (Note that this requires /proc to be mounted, if
-  testing from a boot floppy or in a chroot environment.)
+  O modo "shell autônomo" é uma maneira fácil de experimentar o BusyBox; este é um
+  shell de comando que chama os applets embutidos sem precisar que eles estejam
+  instalados no caminho. (Observe que isso requer que /proc esteja montado, se
+  estiver testando a partir de um disquete de boot ou em um ambiente chroot.)
 
-  The build automatically generates a file "busybox.links", which is used by
-  'make install' to create symlinks to the BusyBox binary for all compiled in
-  commands.  This uses the CONFIG_PREFIX environment variable to specify
-  where to install, and installs hardlinks or symlinks depending
-  on the configuration preferences.  (You can also manually run
-  the install script at "applets/install.sh").
+  A compilação gera automaticamente um arquivo "busybox.links", usado por
+  'make install' para criar links simbólicos para o binário BusyBox para todos os comandos compilados.
+  Isso usa a variável de ambiente CONFIG_PREFIX para especificar
+  onde instalar, e instala hardlinks ou symlinks dependendo
+  das preferências de configuração. (Você também pode executar manualmente
+  o script de instalação em "applets/install.sh").
 
 ----------------
 
-Downloading the current source code:
+Baixando o código-fonte atual:
 
-  Source for the latest released version, as well as daily snapshots, can always
-  be downloaded from
+  O código-fonte da versão mais recente, bem como instantâneos diários, podem sempre
+  ser baixados de
 
     http://busybox.net/downloads/
 
-  You can browse the up to the minute source code and change history online.
+  Você pode navegar pelo código-fonte atualizado e o histórico de alterações online.
 
     http://git.busybox.net/busybox/
 
-  Anonymous GIT access is available.  For instructions, check out:
+  O acesso GIT anônimo está disponível. Para instruções, confira:
 
     http://www.busybox.net/source.html
 
-  For those that are actively contributing and would like to check files in,
-  see:
+  Para aqueles que estão contribuindo ativamente e gostariam de enviar arquivos,
+  veja:
 
     http://busybox.net/developer.html
 
-  The developers also have a bug and patch tracking system
-  (https://bugs.busybox.net) although posting a bug/patch to the mailing list
-  is generally a faster way of getting it fixed, and the complete archive of
-  what happened is the git changelog.
+  Os desenvolvedores também têm um sistema de rastreamento de bugs e patches
+  (https://bugs.busybox.net), embora postar um bug/patch na lista de discussão
+  geralmente seja uma maneira mais rápida de corrigi-lo, e o arquivo completo do
+  que aconteceu é o changelog do git.
 
-  Note: if you want to compile busybox in a busybox environment you must
-  select CONFIG_DESKTOP.
+  Nota: se você quiser compilar o BusyBox em um ambiente BusyBox, deve
+  selecionar CONFIG_DESKTOP.
 
 ----------------
 
-Getting help:
+Obtendo ajuda:
 
-  when you find you need help, you can check out the busybox mailing list
-  archives at http://busybox.net/lists/busybox/ or even join
-  the mailing list if you are interested.
+  Quando você precisar de ajuda, pode conferir os arquivos da lista de discussão do BusyBox
+  em http://busybox.net/lists/busybox/ ou até mesmo participar
+  da lista de discussão, se estiver interessado.
 
 ----------------
 
 Bugs:
 
-  if you find bugs, please submit a detailed bug report to the busybox mailing
-  list at busybox@busybox.net.  a well-written bug report should include a
-  transcript of a shell session that demonstrates the bad behavior and enables
-  anyone else to duplicate the bug on their own machine. the following is such
-  an example:
+  Se encontrar bugs, envie um relatório de bug detalhado para a lista de discussão do BusyBox
+  em busybox@busybox.net. Um relatório de bug bem escrito deve incluir uma
+  transcrição de uma sessão de shell que demonstre o comportamento inadequado e permita
+  que qualquer outra pessoa reproduza o bug em sua própria máquina. O seguinte é um exemplo:
 
-    to: busybox@busybox.net
-    from: diligent@testing.linux.org
-    subject: /bin/date doesn't work
+    para: busybox@busybox.net
+    de: diligent@testing.linux.org
+    assunto: /bin/date não funciona
 
-    package: busybox
-    version: 1.00
+    pacote: busybox
+    versão: 1.00
 
-    when i execute busybox 'date' it produces unexpected results.
-    with gnu date i get the following output:
-
-	$ date
-	fri oct  8 14:19:41 mdt 2004
-
-    but when i use busybox date i get this instead:
+    quando eu executo busybox 'date', ele produz resultados inesperados.
+    com o gnu date, obtenho a seguinte saída:
 
 	$ date
-	illegal instruction
+	sex out  8 14:19:41 mdt 2004
 
-    i am using debian unstable, kernel version 2.4.25-vrs2 on a netwinder,
-    and the latest uclibc from cvs.
+    mas quando uso busybox date, obtenho isto em vez disso:
+
+	$ date
+	instrução ilegal
+
+    estou usando debian unstable, versão do kernel 2.4.25-vrs2 em um netwinder,
+    e o último uclibc do cvs.
 
 	-diligent
 
-  note the careful description and use of examples showing not only what
-  busybox does, but also a counter example showing what an equivalent app
-  does (or pointing to the text of a relevant standard).  Bug reports lacking
-  such detail may never be fixed...  Thanks for understanding.
+  note a descrição cuidadosa e o uso de exemplos mostrando não apenas o que
+  o BusyBox faz, mas também um contra-exemplo mostrando o que um app
+  equivalente faz (ou apontando para o texto de um padrão relevante). Relatórios de bugs sem
+  tais detalhes podem nunca ser corrigidos... Obrigado por entender.
 
 ----------------
 
-Portability:
+Portabilidade:
 
-  Busybox is developed and tested on Linux 2.4 and 2.6 kernels, compiled
-  with gcc (the unit-at-a-time optimizations in version 3.4 and later are
-  worth upgrading to get, but older versions should work), and linked against
-  uClibc (0.9.27 or greater) or glibc (2.2 or greater).  In such an
-  environment, the full set of busybox features should work, and if
-  anything doesn't we want to know about it so we can fix it.
+  O BusyBox é desenvolvido e testado em kernels Linux 2.4 e 2.6, compilado
+  com gcc (as otimizações unit-at-a-time na versão 3.4 e posteriores valem
+  a atualização, mas versões mais antigas devem funcionar), e vinculado contra
+  uClibc (0.9.27 ou superior) ou glibc (2.2 ou superior). Em tal
+  ambiente, o conjunto completo de recursos do BusyBox deve funcionar, e se
+  algo não funcionar, queremos saber sobre isso para podermos corrigir.
 
-  There are many other environments out there, in which busybox may build
-  and run just fine.  We just don't test them.  Since busybox consists of a
-  large number of more or less independent applets, portability is a question
-  of which features work where.  Some busybox applets (such as cat and rm) are
-  highly portable and likely to work just about anywhere, while others (such as
-  insmod and losetup) require recent Linux kernels with recent C libraries.
+  Existem muitos outros ambientes por aí, nos quais o BusyBox pode compilar
+  e executar perfeitamente. Nós simplesmente não os testamos. Como o BusyBox consiste em um
+  grande número de applets mais ou menos independentes, a portabilidade é uma questão
+  de quais recursos funcionam onde. Alguns applets do BusyBox (como cat e rm) são
+  altamente portáteis e provavelmente funcionarão em praticamente qualquer lugar, enquanto outros (como
+  insmod e losetup) requerem kernels Linux recentes com bibliotecas C recentes.
 
-  Earlier versions of Linux and glibc may or may not work, for any given
-  configuration.  Linux 2.2 or earlier should mostly work (there's still
-  some support code in things like mount.c) but this is no longer regularly
-  tested, and inherently won't support certain features (such as long files
-  and --bind mounts).  The same is true for glibc 2.0 and 2.1: expect a higher
-  testing and debugging burden using such old infrastructure.  (The busybox
-  developers are not very interested in supporting these older versions, but
-  will probably accept small self-contained patches to fix simple problems.)
+  Versões anteriores do Linux e glibc podem ou não funcionar, para qualquer configuração
+  dada. O Linux 2.2 ou anterior deve funcionar na maior parte (ainda há
+  algum código de suporte em coisas como mount.c), mas isso não é mais regularmente
+  testado, e inerentemente não suportará certos recursos (como arquivos longos
+  e montagens --bind). O mesmo é verdadeiro para glibc 2.0 e 2.1: espere uma
+  maior carga de teste e depuração ao usar essa infraestrutura antiga. (Os desenvolvedores do BusyBox
+  não estão muito interessados em suportar essas versões mais antigas, mas
+  provavelmente aceitarão pequenos patches autocontidos para corrigir problemas simples.)
 
-  Some environments are not recommended.  Early versions of uClibc were buggy
-  and missing many features: upgrade.  Linking against libc5 or dietlibc is
-  not supported and not interesting to the busybox developers.  (The first is
-  obsolete and has no known size or feature advantages over uClibc, the second
-  has known bugs that its developers have actively refused to fix.)  Ancient
-  Linux kernels (2.0.x and earlier) are similarly uninteresting.
+  Alguns ambientes não são recomendados. As primeiras versões do uClibc eram bugadas
+  e faltavam muitos recursos: atualize. Vincular contra libc5 ou dietlibc não é
+  suportado e não é interessante para os desenvolvedores do BusyBox. (O primeiro é
+  obsoleto e não tem vantagens conhecidas de tamanho ou recursos sobre o uClibc, o segundo
+  tem bugs conhecidos que seus desenvolvedores se recusaram ativamente a corrigir.) Kernels
+  Linux antigos (2.0.x e anteriores) são igualmente desinteressantes.
 
-  In theory it's possible to use Busybox under other operating systems (such as
-  MacOS X, Solaris, Cygwin, or the BSD Fork Du Jour).  This generally involves
-  a different kernel and a different C library at the same time.  While it
-  should be possible to port the majority of the code to work in one of
-  these environments, don't be surprised if it doesn't work out of the box.  If
-  you're into that sort of thing, start small (selecting just a few applets)
-  and work your way up.
+  Em teoria, é possível usar o BusyBox em outros sistemas operacionais (como
+  MacOS X, Solaris, Cygwin ou o BSD Fork Du Jour). Isso geralmente envolve
+  um kernel diferente e uma biblioteca C diferente ao mesmo tempo. Embora
+  deva ser possível portar a maioria do código para funcionar em um desses ambientes,
+  não fique surpreso se não funcionar de imediato. Se
+  você está interessado nesse tipo de coisa, comece pequeno (selecionando apenas alguns applets)
+  e vá avançando.
 
-  In 2005 Shaun Jackman has ported busybox to a combination of newlib
-  and libgloss, and some of his patches have been integrated.
+  Em 2005, Shaun Jackman portou o BusyBox para uma combinação de newlib
+  e libgloss, e alguns de seus patches foram integrados.
 
-Supported hardware:
+Hardware suportado:
 
-  BusyBox in general will build on any architecture supported by gcc.  We
-  support both 32 and 64 bit platforms, and both big and little endian
-  systems.
+  O BusyBox, em geral, será compilado em qualquer arquitetura suportada pelo gcc. Nós
+  suportamos plataformas de 32 e 64 bits, e sistemas little e big endian.
 
-  Under 2.4 Linux kernels, kernel module loading was implemented in a
-  platform-specific manner.  Busybox's insmod utility has been reported to
-  work under ARM, CRIS, H8/300, x86, ia64, x86_64, m68k, MIPS, PowerPC, S390,
-  SH3/4/5, Sparc, and v850e.  Anything else probably won't work.
+  Sob kernels Linux 2.4, o carregamento de módulos do kernel foi implementado de forma
+  específica à plataforma. O utilitário insmod do BusyBox foi relatado como
+  funcionando sob ARM, CRIS, H8/300, x86, ia64, x86_64, m68k, MIPS, PowerPC, S390,
+  SH3/4/5, Sparc, e v850e. Qualquer outra coisa provavelmente não funcionará.
 
-  The module loading mechanism for the 2.6 kernel is much more generic, and
-  we believe 2.6.x kernel module loading support should work on all
-  architectures supported by the kernel.
+  O mecanismo de carregamento de módulos para o kernel 2.6 é muito mais genérico, e
+  acreditamos que o suporte ao carregamento de módulos do kernel 2.6.x deve funcionar em todas
+  as arquiteturas suportadas pelo kernel.
 
 ----------------
 
-Please feed suggestions, bug reports, insults, and bribes back to the busybox
-mailing list:
+Por favor, envie sugestões, relatórios de bugs, insultos e subornos de volta para a lista de discussão
+do BusyBox:
 
 	busybox@busybox.net
 
-and/or maintainer:
+e/ou mantenedor:
 
 	Denys Vlasenko
 	<vda.linux@googlemail.com>
